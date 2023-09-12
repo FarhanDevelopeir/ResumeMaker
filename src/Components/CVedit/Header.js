@@ -221,7 +221,7 @@ const Header = (props) => {
                       onChange={props.Experiencefield}
                     />
                   </div>
-                  <button class="ui button" type="submit">Clear</button>
+                  <button class="ui button" type="submit">Add Experience</button>
                 </form>
               </Accordion.Body>
             </Accordion.Item>
