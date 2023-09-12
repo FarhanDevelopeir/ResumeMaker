@@ -9,7 +9,7 @@ const HighorderComp = (Data) => {
         const [change, setchange]=useState(false);
         const [cvdesign, setcvdesign]=useState(false);
         const [displaycolorpicker, setdisplaycolorpicker]=useState(false);
-        const [color, setcolor]=useState('#F6BE00');
+        const [color, setcolor]=useState('#119ADB');
         const [education, seteducation]=useState([]);
         const [Sname, setSname]=useState('CTTI');
         const [Sdegree, setSdegree]=useState('DAE');
@@ -19,6 +19,7 @@ const HighorderComp = (Data) => {
         const [Ecenter, setEcenter]=useState('PBTE');
         const [Efield, setEfield]=useState('Information Technology');
         const [clearCV, setclearCV]=useState(false)
+        const [activeBox, setActiveBox] = useState(null);
 
 
         // const [name, setname]=useState('');
@@ -36,6 +37,11 @@ const HighorderComp = (Data) => {
 
         const Backplace=()=>{
             setchange(false);
+            
+        }
+
+        const Changeboxes=()=>{
+
         }
 
         // change CVdesign  
@@ -102,6 +108,11 @@ const HighorderComp = (Data) => {
 
         }
 
+        // Download CV 
+        // const DownloadCV=()=>{
+        //    const input=pdf
+        // }
+
         // CVExample 
         const ExampleCV=()=>{
             // alert('thisworks')
@@ -131,6 +142,8 @@ const HighorderComp = (Data) => {
             setEfield('')
             
         }
+
+
     
 
         return (
@@ -151,6 +164,8 @@ const HighorderComp = (Data) => {
             change={change}
             Changedata={Changedata}
             Backplace={Backplace}
+            Changeboxes={Changeboxes}
+            activeBox={activeBox}
 
             cvdesign={cvdesign}
             CVdesign={CVdesign}
@@ -184,6 +199,8 @@ const HighorderComp = (Data) => {
             ExampleCV={ExampleCV}
             clearCV={clearCV}
             ClearCV={ClearCV}
+
+            // DownloadCV={DownloadCV}
 
             {...props}
             />

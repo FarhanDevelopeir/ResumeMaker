@@ -423,6 +423,7 @@ const Header = (props) => {
       </div>
       <div className='shadow ml-4' style={{
         width: '60%',
+        // border:'2px solid red'
 
 
         // border:'2px solid red'

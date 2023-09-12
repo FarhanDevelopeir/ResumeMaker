@@ -18,7 +18,9 @@ const ContentCustomize = (props) => {
         // margin: '3%'
       }} >
         <button
+        // className={`box ${props.activeBox === 1 ? 'active' : ''}`}
           onClick={props.Backplace}
+          
         style={{
           width: '95%',
           backgroundColor: "white",

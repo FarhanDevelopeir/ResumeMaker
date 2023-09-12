@@ -1,15 +1,39 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import UserExpEdu from './UserExpEdu'
 import HighorderComp from '../HighorderComp'
+import html2canvas from 'html2canvas'
+import jspdf from 'jspdf'
 
 const Result = (props) => {
 
     // console.log(props.Sname)
+    const pdfref=useRef();
+
+    const DownloadCV=()=>{
+        const input=pdfref.current;
+        html2canvas(input).then((canvas)=>{
+            const imgData=canvas.toDataURL('image/png');
+            const pdf=new jspdf('p', 'mm','a4', true);
+            const pdfWidth=pdf.internal.pageSize.getWidth();
+            const pdfHeight=pdf.internal.pageSize.getHeight();
+            const imgWidth= canvas.width;
+            const imgHeight= canvas.height;
+            const ratio = Math.min(pdfWidth/imgWidth, pdfHeight/imgHeight);
+            const imgX= (pdfWidth-imgWidth*ratio)/2;
+            const imgY=30;
+            pdf.addImage(imgData,'PNG', imgX, imgY, imgWidth*ratio, imgHeight*ratio);
+            pdf.save('invoice.pdf');
+        })
+    }
 
     return (
-        <div>
-            {props.cvdesign === false ? <div style={{
-                display: 'flex',
+        <div style={{
+            // border:'2px solid red'
+        }}>
+            {props.cvdesign === false ?  <div ref={pdfref}
+             style={{
+                display: 'flex', 
+                
                 // border:'2px solid red',
 
 
@@ -72,7 +96,8 @@ const Result = (props) => {
 
 
 
-                <div style={{
+                <div ref={pdfref}
+                 style={{
                     // display: 'flex',
                     // border:'2px solid red',
 
@@ -143,6 +168,19 @@ const Result = (props) => {
                 </div>
 
             }
+
+            <div style={{ float:'right'}}>
+            <button onClick={DownloadCV}
+            className='ui button blue ' 
+            style={{
+                position:'absolute',
+             right:'5%',
+              bottom:'10%',
+              boxShadow: `0 4px 8px rgba(255, 255, 255, 0.2)`
+              }} >Download</button>
+
+            </div>
+
         </div>
     )
 }
